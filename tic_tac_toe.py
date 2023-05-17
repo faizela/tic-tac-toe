@@ -19,14 +19,28 @@ else:
     p2 = p2 + choices[0]
     print(f'Player two your choice will be {p2}')
 
-def rows_list():
+def rows_dict():
+    rows_dic = {}
+    count = 0
     board_arr = board.split('\n')
-    return board_arr
+    for row in board_arr:
+        rows_dic[f'R{1 + count}'] = row
+        count += 1
 
-def row_1():
-    r1_str = rows_list()[0]
-    r1_dic = {'r1' : r1_str}
-    return r1_dic
+    return rows_dic
 
 
+# 
+
+# def row_1():
+#     r1_str = rows_list()[0]
+#     r1_dic = {'r1' : r1_str}
+#     return r1_dic
+
+# def row_1_cells():
+#     r1_dic = row_1()
+#     r1_str = r1_dic['r1']
+#     return r1_str.split('|')
+
+  
 
