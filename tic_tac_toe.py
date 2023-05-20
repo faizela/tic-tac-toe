@@ -70,7 +70,6 @@ while running:
     #     player_2_str = input(f'Player_2 - Where would You like to place your {p1_letter.upper()} in which cell block [1 - 9]? ')
     try:
         player_1_int = int(input(f'Player_1 - Where would You like to place your {p1_letter.upper()} in which cell block [1 - 9]? '))
-        # player_2_int = int(player_2_str)
         if player_1_int not in allowed_nums:
             print('Enter a valid number from 1 to 9')
         for num in allowed_nums:
@@ -78,12 +77,34 @@ while running:
                 board[num - 1] = p1_letter.upper()
                 game_board()
                 if rows_win_x(board) and p1_letter.upper() == 'X':
-                    # print()
-                    # print(P1_WIN_MSG)#
-                    # print()
                     running = False
-                    game_board()
                     print(P1_WIN_MSG)
+
+                if cols_win_x(board) and p1_letter.upper() == 'X':
+                    running = False
+                    print(P1_WIN_MSG)
+
+                if diagnols_win_x(board) and p1_letter.upper() == 'X':
+                    running = False
+                    print(P1_WIN_MSG)
+
+                if rows_win_o(board) and p1_letter.upper() == '0':
+                    running = False
+                    print(P1_WIN_MSG)
+
+                if cols_win_o(board) and p1_letter.upper() == '0':
+                    running = False
+                    print(P1_WIN_MSG)
+                    
+                if diagnols_win_o(board) and p1_letter.upper() == '0':
+                    print(P1_WIN_MSG)
+                    running = False
+    
+                
+        if running:
+            player_2_int = int(input(f'Player_2 - Where would You like to place your {p2_letter.upper()} in which cell block [1 - 9]? '))
+            if player_2_int not in allowed_nums:
+                print('Enter a valid number from 1 to 9')            
 
                 # if cols_win_x(board) and p1_letter.upper() == 'X':
                 #     print(P1_WIN_MSG)
