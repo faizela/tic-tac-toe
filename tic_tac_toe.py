@@ -72,6 +72,13 @@ def check_tie(board):
     if '-' not in board:
         print_board(board)
         print("It is a tie!")
+        global gameRunning
+        gameRunning = False
+
+def check_win():
+    if check_row(board) or check_column(board) or check_diagnols(board):
+        print(f'The winner is {Winner}')
+        global gameRunning
         gameRunning = False
 
 # switch the player
@@ -81,153 +88,17 @@ def switch_player():
         CurrentPlayer = 'O'
     else:
         CurrentPlayer = 'X'
-    
-    
 
 
-
-
-
-# def cols_win_x(board):
-#     return board[0] == 'X' and board[3] == 'X' and board[6] == 'X' or \
-#     board[1] == 'X' and board[4] == 'X' and board[7] == 'X' or \
-#     board[2] == 'X' and board[5] == 'X' and board[8] == 'X'
-
-# def rows_win_x(board):
-#     return board[0] == 'X' and board[1] == 'X' and board[2] == 'X' or \
-#     board[3] == 'X' and board[4] == 'X' and board[5] == 'X' or \
-#     board[6] == 'X' and board[7] == 'X' and board[8] == 'X'
-
-# def diagnols_win_x(board):
-#     return board[0] == 'X' and board[4] == 'X' and board[8] == 'X' or \
-#     board[2] == 'X' and board[4] == 'X' and board[6] == 'X'
-
-# def cols_win_o(board):
-#     return board[0] == '' and board[3] == 'O' and board[6] == 'O' or \
-#     board[1] == '0' and board[4] == '0' and board[7] == '0' or \
-#     board[2] == '0' and board[5] == '0' and board[8] == '0'
-
-# def rows_win_o(board):
-#     return board[0] == 'O' and board[1] == 'O' and board[2] == '0' or \
-#     board[3] == 'O' and board[4] == 'O' and board[5] == '0' or \
-#     board[6] == '0' and board[7] == '0' and board[8] == '0'
-
-# def diagnols_win_o(board):
-#     return board[0] == 'O' and board[4] == 'O' and board[8] == 'O' or \
-#     board[2] == 'O' and board[4] == 'O' and board[6] == 'O'
-
-
-
+# check for win or tie again
         
-
-while gameRunning:#
+while gameRunning:
     print_board(board)
     player_input(board)
-    # allowed_nums = [1,2,3,4,5,6,7,8,9]
-    # P1_WIN_MSG = 'Player 1 Wins!'
-    # P2_WIN_MSG = 'Player 2 Wins!'
-    # count =  0 # count variablle to check for '-' used for checking for draw
-
-    # Player one
-   
-
-   
-
-    # # Player two 
-        # if running:
-        #     try:
-        #         player_2_int = int(input(f'Player 2 - Where would You like to place your {p2_letter.upper()} in which cell block [1 - 9]? '))
-        #         if player_2_int not in allowed_nums:
-        #                     print('Enter a valid number from 1 to 9')
-        #     except ValueError:
-        #         print('Enter a valid number between 1 to 9')
-        #     else:
-        #         try:
-        #             if player_2_int not in allowed_nums:
-        #                     print('Enter a valid number from 1 to 9')
-        #         except:
-        #             print('Enter a valid number between 1 to 9')
-        #         else:
-        #             for num in allowed_nums:
-        #                 if num == player_2_int:
-        #                     board[num - 1] = p2_letter.upper()
-                                
-        #     game_board()
-                
-        
-
-
-    # game_board()
-    #             if rows_win_x(board) and p1_letter.upper() == 'X':
-    #                 running = False
-    #                 print(P1_WIN_MSG)
-
-    #             if cols_win_x(board) and p1_letter.upper() == 'X':
-    #                 running = False
-    #                 print(P1_WIN_MSG)
-
-    #             if diagnols_win_x(board) and p1_letter.upper() == 'X':
-    #                 running = False
-    #                 print(P1_WIN_MSG)
-
-    #             if rows_win_o(board) and p1_letter.upper() == 'O':
-    #                 running = False
-    #                 print(P1_WIN_MSG)
-
-    #             if cols_win_o(board) and p1_letter.upper() == 'O':
-    #                 running = False
-    #                 print(P1_WIN_MSG)
-
-    #             if diagnols_win_o(board) and p1_letter.upper() == 'O':
-    #                 running = False
-    #                 print(P1_WIN_MSG)
-        
-    #     for i in range(len(board)):
-    #         if running and board[i] != '-':
-    #             count += 1
-    #         if count == 9:
-    #             running = False
-    #             print("it's a draw")
-
-                
-
+    check_win()
+    check_tie(board)
+    switch_player()
     
-    #     #### player two ####
-    #     if running:
-    #         try:
-    #             player_2_int = int(input(f'Player_2 - Where would You like to place your {p2_letter.upper()} in which cell block [1 - 9]? '))
-    #             if player_2_int not in allowed_nums:
-    #                 print('Enter a valid number from 1 to 9')
-    #         except ValueError:
-    #             print('Enter a valid number between 1 to 9')
-    #         for num in allowed_nums:
-    #             if num == player_2_int:
-    #                 board[num - 1] = p2_letter.upper()
-    #                 game_board()
-    #                 if rows_win_x(board) and p2_letter.upper() == 'X':
-    #                     running = False
-    #                     print(P2_WIN_MSG)
-
-    #                 if cols_win_x(board) and p2_letter.upper() == 'X':
-    #                     running = False
-    #                     print(P2_WIN_MSG)
-
-    #                 if diagnols_win_x(board) and p2_letter.upper() == 'X':
-    #                     running = False
-    #                     print(P2_WIN_MSG)
-
-    #                 if rows_win_o(board) and p2_letter.upper() == '0':
-    #                     running = False
-    #                     print(P2_WIN_MSG)
-
-    #                 if cols_win_o(board) and p2_letter.upper() == '0':
-    #                     running = False
-    #                     print(P2_WIN_MSG)
-                        
-    #                 if diagnols_win_o(board) and p2_letter.upper() == '0':
-    #                     running = False            
-    #                     print(P2_WIN_MSG)
-
 
 
                 
