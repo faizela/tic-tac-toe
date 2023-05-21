@@ -10,61 +10,68 @@ gameRunning = True
 
 
    
-
-def game_board():
+#  printing the game board
+def print_board(board):
     print(board[0] + ' | ' + board[1] + ' | ' + board[2])
     print('---------')
     print(board[3] + ' | ' + board[4] + ' | ' + board[5])
     print('---------')
     print(board[6] + ' | ' + board[7] + ' | ' + board[8])
 
-def cols_win_x(board):
-    return board[0] == 'X' and board[3] == 'X' and board[6] == 'X' or \
-    board[1] == 'X' and board[4] == 'X' and board[7] == 'X' or \
-    board[2] == 'X' and board[5] == 'X' and board[8] == 'X'
 
-def rows_win_x(board):
-    return board[0] == 'X' and board[1] == 'X' and board[2] == 'X' or \
-    board[3] == 'X' and board[4] == 'X' and board[5] == 'X' or \
-    board[6] == 'X' and board[7] == 'X' and board[8] == 'X'
+# take player input
 
-def diagnols_win_x(board):
-    return board[0] == 'X' and board[4] == 'X' and board[8] == 'X' or \
-    board[2] == 'X' and board[4] == 'X' and board[6] == 'X'
-
-def cols_win_o(board):
-    return board[0] == '' and board[3] == 'O' and board[6] == 'O' or \
-    board[1] == '0' and board[4] == '0' and board[7] == '0' or \
-    board[2] == '0' and board[5] == '0' and board[8] == '0'
-
-def rows_win_o(board):
-    return board[0] == 'O' and board[1] == 'O' and board[2] == '0' or \
-    board[3] == 'O' and board[4] == 'O' and board[5] == '0' or \
-    board[6] == '0' and board[7] == '0' and board[8] == '0'
-
-def diagnols_win_o(board):
-    return board[0] == 'O' and board[4] == 'O' and board[8] == 'O' or \
-    board[2] == 'O' and board[4] == 'O' and board[6] == 'O'
-
-def playerInput(board, player):
-        inp = int(input("Enter a number 1-9: "))
+def player_input(board):
+        try:
+            inp = int(input("Enter a number 1-9: "))
+        except ValueError:
+             print("Enter a valid number from 1 to 9")
         if inp >= 1 and inp <= 9 and board[inp-1] == '-':
-            board[inp-1] = player
+            board[inp-1] = CurrentPlayer
         else:
             print("That position is already taken by other player")
 
+
+# def cols_win_x(board):
+#     return board[0] == 'X' and board[3] == 'X' and board[6] == 'X' or \
+#     board[1] == 'X' and board[4] == 'X' and board[7] == 'X' or \
+#     board[2] == 'X' and board[5] == 'X' and board[8] == 'X'
+
+# def rows_win_x(board):
+#     return board[0] == 'X' and board[1] == 'X' and board[2] == 'X' or \
+#     board[3] == 'X' and board[4] == 'X' and board[5] == 'X' or \
+#     board[6] == 'X' and board[7] == 'X' and board[8] == 'X'
+
+# def diagnols_win_x(board):
+#     return board[0] == 'X' and board[4] == 'X' and board[8] == 'X' or \
+#     board[2] == 'X' and board[4] == 'X' and board[6] == 'X'
+
+# def cols_win_o(board):
+#     return board[0] == '' and board[3] == 'O' and board[6] == 'O' or \
+#     board[1] == '0' and board[4] == '0' and board[7] == '0' or \
+#     board[2] == '0' and board[5] == '0' and board[8] == '0'
+
+# def rows_win_o(board):
+#     return board[0] == 'O' and board[1] == 'O' and board[2] == '0' or \
+#     board[3] == 'O' and board[4] == 'O' and board[5] == '0' or \
+#     board[6] == '0' and board[7] == '0' and board[8] == '0'
+
+# def diagnols_win_o(board):
+#     return board[0] == 'O' and board[4] == 'O' and board[8] == 'O' or \
+#     board[2] == 'O' and board[4] == 'O' and board[6] == 'O'
+
+
+
         
-print()
-game_board()
-print() # for space
-running = True
-while running:
-    allowed_nums = [1,2,3,4,5,6,7,8,9]
-    P1_WIN_MSG = 'Player 1 Wins!'
-    P2_WIN_MSG = 'Player 2 Wins!'
-    playerInput(board, p1_letter)
-    count =  0 # count variablle to check for '-' used for checking for draw
-      
+
+while gameRunning:
+    # allowed_nums = [1,2,3,4,5,6,7,8,9]
+    # P1_WIN_MSG = 'Player 1 Wins!'
+    # P2_WIN_MSG = 'Player 2 Wins!'
+    # count =  0 # count variablle to check for '-' used for checking for draw
+    
+    print_board(board)
+    player_input(board)
     # Player one
    
 
