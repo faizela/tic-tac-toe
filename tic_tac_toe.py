@@ -55,8 +55,8 @@ def rows_win_o(board):
     board[6] == '0' and board[7] == '0' and board[8] == '0'
 
 def diagnols_win_o(board):
-    return board[0] == 'X' and board[4] == 'X' and board[8] == 'X' or \
-    board[2] == 'X' and board[4] == 'X' and board[6] == 'X'
+    return board[0] == 'O' and board[4] == 'O' and board[8] == 'O' or \
+    board[2] == 'O' and board[4] == 'O' and board[6] == 'O'
 
 
 game_board()
@@ -87,15 +87,15 @@ while running:
                     running = False
                     print(P1_WIN_MSG)
 
-                if rows_win_o(board) and p1_letter.upper() == '0':
+                if rows_win_o(board) and p1_letter.upper() == 'O':
                     running = False
                     print(P1_WIN_MSG)
 
-                if cols_win_o(board) and p1_letter.upper() == '0':
+                if cols_win_o(board) and p1_letter.upper() == 'O':
                     running = False
                     print(P1_WIN_MSG)
 
-                if diagnols_win_o(board) and p1_letter.upper() == '0':
+                if diagnols_win_o(board) and p1_letter.upper() == 'O':
                     running = False
                     print(P1_WIN_MSG)
         
