@@ -4,22 +4,11 @@ board = ['-','-','-',
         '-','-','-',
         '-','-','-']
 
-choices = 
+CurrentPlayer = 'X'
+Winner = None
+gameRunning = True
 
-while True:
-    p1_letter = input("Player 1 - What letter would you like to choose 'X' or 'O' ")
-    p2_letter = ''
 
-    if p1_letter.upper() == 'X':
-        p2_letter = p2_letter + choices[1]
-        print(f'Player two your choice will be {p2_letter}')
-        break
-    elif p1_letter.upper() == 'O':
-        p2_letter = p2_letter + choices[0]
-        print(f'Player two your choice will be {p2_letter}')
-        break
-    else:
-        print('Enter a letter X or O')
    
 
 def game_board():
